@@ -35,6 +35,8 @@ The baseline algorithms used in the manuscript are courtesy of their respective 
  
  Test files are available. To proceed, open and start one of the following files:
  
+- test_Example_in_Intro_CBCL.m : run demo for generating Figure 1 from Section 1.3 of the paper.
+- test_Hyperspectral_Images_betaNMF32.m : run demo for $\beta=3/2$-NMF for hyperspectral imaging, see Section 5.1 of the paper. 
 - test_Images_DocClassification.m : run benchmark for KL-NMF for Images data sets and document classification (data sets specified within the file), see section 5.1 of th paper.
 - test_Audio_minvolKLNMF.m : run demo for min-vol KL NMF for blind audio SS tasks, section 5.2 of the paper.
  
