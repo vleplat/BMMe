@@ -9,7 +9,7 @@
 %
 % written by LTK Hien
 % Latest update: December 2023
-function [W,H,e,t] = MU(X,r,options) 
+function [W,H,e,t] = MU_KLNMF(X,r,options) 
 cputime0 = tic; 
 [m,n] = size(X); 
 %% Parameters of NMF algorithm
