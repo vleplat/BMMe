@@ -103,12 +103,12 @@ while i <= options.maxiter && t(i) < options.timemax
     if options.display ==1 && options.obj_compute==1
         % only display at iteration i s.t. i = 2^k for some k
         if i-1 == 2^kdis
-            fprintf('MU: iteration %4d fitting error: %1.4e \n',i-1,e(i));
+            fprintf('MUe: iteration %4d fitting error: %1.4e \n',i-1,e(i));
             kdis = kdis+1;
         end
     elseif options.display ==1
         if i-1 == 2^kdis
-            fprintf('MU: iteration %4d:',i-1);
+            fprintf('MUe: iteration %4d:',i-1);
             kdis = kdis+1;
         end
     end
