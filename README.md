@@ -54,8 +54,8 @@ For benchmarked approaches, the parameters have been tuned according to the orig
 ## References:
 [1]: C. Févotte and N. Dobigeon, "Nonlinear Hyperspectral Unmixing With Robust Nonnegative Matrix Factorization," in IEEE Transactions on Image Processing, vol. 24, no. 12, pp. 4810-4819, Dec. 2015, doi: 10.1109/TIP.2015.2468177.
 
-[2]: V. Leplat, N. Gillis and J. Idier. "MULTIPLICATIVE UPDATES FOR NMF WITH $\beta$-DIVERGENCES UNDER DISJOINT EQUALITY CONSTRAINTS", in SIMAX, Vol. 42, No. 2, pp. 730--752, 2021. 
+[2]: V. Leplat,  N. Gillis and J. Idier, "Multiplicative Updates for NMF with β-Divergences under Disjoint Equality Constraints", SIAM J. on Matrix Analysis and Applications 42 (2), 730-752, 2021. 
 
-[3]: V. Leplat, N. Gillis and Andersen M.S. Ang. "Blind Audio Source Separation with Minimum-Volume Beta-Divergence NMF", in IEEE TSP, Vol.68, 2020. 
+[3]: V. Leplat, N. Gillis and A.M.S. Ang, "Blind Audio Source Separation with Minimum-Volume Beta-Divergence NMF", IEEE Transactions on Signal Processing 68, pp. 3400-3410, 2020.  
 
 [4]: L.T.K. Hien and N. Gillis. "Algorithms for nonnegative matrix factorization with the Kullback-Leibler divergence." Journal of Scientific Computing, (87):93, 2021.
