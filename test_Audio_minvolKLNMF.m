@@ -59,7 +59,7 @@ options.init_points = 1;
 % Benchmarks
 %%------------------------------------------------------------------------
 e_min_min=1e16;
-nb_Trials = 20;
+nb_Trials = 2;
 compa_setup = 1; %0: fixed max number of iterations, 1: fixed max cpu time
 MUe_struc = [];
 MUe_noex_struc = [];
@@ -266,8 +266,8 @@ if compa_setup == 0
     semilogy(disj_mvkl_e_mean-e_min_mins,'r','LineWidth',1.5);hold on;
     semilogy(MUe_noex_e_mean-e_min_mins,'b','LineWidth',1.5);hold on; 
     semilogy(disj_mvklex_e_mean-e_min_mins,'k','LineWidth',1.5);hold on;
-    ylabel('e_{rel} - e_{rel,min}');
-    xlabel('Iteration counter')
+    ylabel('$e_{rel} - e_{rel,min}$','Interpreter','latex');
+    xlabel('Iteration counter','Interpreter','latex');
     title([' Av. over ' num2str(nb_Trials)  ' runs - $\tilde{\lambda}=$ ' num2str(options.lambda_tilde)],'FontSize',18, 'Interpreter','latex')
     legend(['MUe - ' num2str(mean(MUe_ttot),'%2.2f') ' +/- ' num2str(std(MUe_ttot),'%2.2f') ' sec.' ],['[Leplat et al., 2021] - ' num2str(mean(disj_mvkl_ttot),'%2.2f') ' +/- ' num2str(std(disj_mvkl_ttot),'%2.2f') ' sec.' ],['MU - ' num2str(mean(MUe_noex_ttot),'%2.2f') ' +/- ' num2str(std(MUe_noex_ttot),'%2.2f') ' sec.'],['[Leplat et al., 2021]e - ' num2str(mean(disj_mvklex_ttot),'%2.2f') ' +/- ' num2str(std(disj_mvklex_ttot),'%2.2f') ' sec.' ]); 
     grid on;
@@ -286,8 +286,8 @@ if compa_setup == 0
     semilogy(tempo_grid3(star_idx:end)',disj_mvkl_curve_1(star_idx:end),'r--','LineWidth',1.5);hold on;
     semilogy(tempo_grid2(star_idx:end)',MUe_noex_curve_1(star_idx:end),'b','LineWidth',1.5);hold on; 
     semilogy(tempo_grid4(star_idx:end)',disj_mvklex_curve_1(star_idx:end),'k-x','LineWidth',1.5);hold on;
-    ylabel('e_{rel} - e_{rel,min}');
-    xlabel('Cpu time [sec.]')
+    ylabel('$e_{rel} - e_{rel,min}$','Interpreter','latex');
+    xlabel('time (s.)','Interpreter','latex'); 
     title([' Median curves over ' num2str(nb_Trials)  ' runs - $\tilde{\lambda}=$ ' num2str(options.lambda_tilde)],'FontSize',18, 'Interpreter','latex')
     legend(['MUe'],['[Leplat et al., 2021] ' ],['MU' ],['[Leplat et al., 2021]e.' ]); 
     grid on;
@@ -304,8 +304,8 @@ if compa_setup == 0
     semilogy(tempo_grid3(star_idx:end)',disj_mvkl_curve_2(star_idx:end),'r--','LineWidth',1.5);hold on;
     semilogy(tempo_grid2(star_idx:end)',MUe_noex_curve_2(star_idx:end),'b','LineWidth',1.5);hold on; 
     semilogy(tempo_grid4(star_idx:end)',disj_mvklex_curve_2(star_idx:end),'k-x','LineWidth',1.5);hold on;
-    ylabel('e_{rel} - e_{rel,min}');
-    xlabel('Cpu time [sec.]')
+    ylabel('$e_{rel} - e_{rel,min}$','Interpreter','latex');
+    xlabel('time (s.)', 'Interpreter','latex')
     title([' Min. curves over ' num2str(nb_Trials)  ' runs - $\tilde{\lambda}=$ ' num2str(options.lambda_tilde)],'FontSize',18, 'Interpreter','latex')
     legend(['MUe'],['[Leplat et al., 2021] ' ],['MU' ],['[Leplat et al., 2021]e.' ]); 
     grid on;
