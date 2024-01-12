@@ -39,8 +39,10 @@ for ida = 1 : numdatasets
         options.H = MUbeta(X,W0,H0,options.beta,options.epsilon);
         options.W = MUbeta(X',options.H',W0',options.beta,options.epsilon);
         options.W = options.W';
+        disp('***Running MU for beta-NMF without extrapolation***'); 
         options.extrapol = 'noextrap'; 
         [W,H,e,t] = betaNMF(X,r,options);
+        disp('***Running MU for beta-NMF with extrapolation (that is, MUe)***'); 
         options.extrapol = 'nesterov'; 
         [We,He,ee,te] = betaNMF(X,r,options);
         etot(ida,i,:) = e;
