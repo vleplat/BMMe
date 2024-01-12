@@ -10,7 +10,7 @@
 % this version uses t_Nesterov in the extrapolation sequences. 
 % written by LTK Hien
 % Latest update: December 2023
-function [W,H,e,t] = MUe(X,r,options) 
+function [W,H,e,t] = MUe_KLNMF(X,r,options) 
 cputime0 = tic; 
 [m,n] = size(X); 
 %% Parameters of NMF algorithm
@@ -61,6 +61,7 @@ if options.obj_compute==1
     timeerr=toc(time1); % to remove the time of finding the objective function
 end
 t1=1;
+kdis = 0; 
 while i <= options.maxiter && t(i) < options.timemax  
     t2=1/2*(1+sqrt(1+4*t1*t1));
     ex_coef=(t1-1)/t2;
@@ -99,10 +100,17 @@ while i <= options.maxiter && t(i) < options.timemax
         timeerr=timeerr + toc(time1);
     end
     t(i)= toc(cputime0)-timeerr;
-    if  options.display ==1 && options.obj_compute==1
-          fprintf('MUe: iteration %4d fitting error: %1.4e \n',i,e(i));     
+    if options.display ==1 && options.obj_compute==1
+        % only display at iteration i s.t. i = 2^k for some k
+        if i-1 == 2^kdis
+            fprintf('MU: iteration %4d fitting error: %1.4e \n',i-1,e(i));
+            kdis = kdis+1;
+        end
+    elseif options.display ==1
+        if i-1 == 2^kdis
+            fprintf('MU: iteration %4d:',i-1);
+            kdis = kdis+1;
+        end
     end
 end
-end
-
-
+end 
