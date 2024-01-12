@@ -13,7 +13,7 @@ options.timemax = Inf;
 options.epsilon = 2^(-52);
 fprintf('Running HSI experiment: %2.0f data sets, %2.0f initializations.\n',...
     numdatasets,numinit);
-fprintf('This should take about %2.0f minutes.\n', 2*7*options.maxiter*numinit/60);
+fprintf('This should take of the order of %2.0f minutes.\n', 2*numdatasets*options.maxiter*numinit/60);
 for ida = 1 : numdatasets
     if ida == 1
         load SanDiego % ~ 3 second for 1 iteration
