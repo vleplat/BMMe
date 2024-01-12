@@ -59,7 +59,7 @@ options.init_points = 1;
 % Benchmarks
 %%------------------------------------------------------------------------
 e_min_min=1e16;
-nb_Trials = 2;
+nb_Trials = 10;
 compa_setup = 1; %0: fixed max number of iterations, 1: fixed max cpu time
 MUe_struc = [];
 MUe_noex_struc = [];
