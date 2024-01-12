@@ -26,6 +26,8 @@ options.extrapol = 'nesterov';
 disp('***Running MU for beta-NMF with extrapolation (that is, MUe)***'); 
 [We,He,ee,te] = betaNMF(X,r,options);
 %% Display results 
+set(0, 'DefaultAxesFontSize', 22);
+set(0, 'DefaultLineLineWidth', 2); 
 figure; 
 err0 = betadivfac(X,X*ones(n,1)/n,ones(1,n),options.beta); 
 mine = min(min(e),min(ee))/err0; 
