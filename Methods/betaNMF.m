@@ -51,9 +51,6 @@ time0 = cputime;
 if nargin <= 2
     options = [];
 end
-if ~isfield(options,'extrapol')
-    options.extrapol = 'nesterov';
-end
 if ~isfield(options,'maxiter')
     options.maxiter = 500;
 end
@@ -63,6 +60,13 @@ end
 if ~isfield(options,'beta')
     warning('Beta not specified, default selected: beta=1 => KL divergence.');
     options.beta = 1;
+end
+if ~isfield(options,'extrapol')
+    if options.beta >= 1 && options.beta <= 2
+        options.extrapol = 'nesterov';
+    else
+        options.extrapol = 'noextrap';
+    end
 end
 if ~isfield(options,'epsilon')
     options.epsilon = eps;
