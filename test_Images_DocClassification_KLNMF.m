@@ -91,7 +91,7 @@ for idx=1:numtrial
         CD_last_obj=[CD_last_obj,e_CD(end)];
      end
 
-     [Wmu,Hmu,e_MU,t_MU]=MU(X,r,options);
+     [Wmu,Hmu,e_MU,t_MU]=MU_KLNMF(X,r,options);
      e_MU=e_MU/nX;
      fprintf('... MU done, final error = %f \n',e_MU(end));
       if idx==1 
@@ -105,7 +105,7 @@ for idx=1:numtrial
         MU_time_save=[MU_time_save(:,1:l);t_MU(1:l)];
         MU_last_obj=[MU_last_obj,e_MU(end)];
      end
-     [W_iMU,H_iMU,e_iMU,t_iMU]=MUe(X,r,options);
+     [W_iMU,H_iMU,e_iMU,t_iMU]=MUe_KLNMF(X,r,options);
      e_iMU=e_iMU/nX; 
      fprintf('... MUe done, final error = %f \n',e_iMU(end));
     
