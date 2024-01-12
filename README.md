@@ -44,7 +44,7 @@ The baseline algorithms used in the manuscript are courtesy of their respective 
  
  There are several parameters that you can choose:
  - $r$: the factorization rank
- - $\tilde{\lambda}$: the relative weight parameter for min-vol penalty, see Section XX for more details
+ - $\tilde{\lambda}$: the relative weight parameter for min-vol penalty, see Appendix B.3 for more details
  - the maximum computation time for benchmarking
  
 For benchmarked approaches, the parameters have been tuned according to the original works:
