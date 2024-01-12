@@ -4,8 +4,8 @@ clear all; close all; clc;
 %%-------------------------------------------------------------------------
 
 % % Image - "CBCL" data set
-load cbclim.mat
-X = M;
+load CBCL.mat
+
 % % Image - "FREY" data set
 % load freyDataset.mat
 % X = M;
@@ -16,7 +16,7 @@ X = M;
 % % Image - "Umistim" data set
 % load Umistim.mat
 % X = M;
-clear M;
+% clear M;
 
 % % Document classification - "classic"
 % load Datasets/classic.mat
