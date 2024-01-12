@@ -19,11 +19,11 @@ options.W = MUbeta(X',options.H',W0',options.beta);
 options.W = options.W'; 
 %% Running MU without extrapolation 
 options.extrapol = 'noextrap'; 
-disp('Running MU for beta-NMF without extrapolation'). 
+disp('***Running MU for beta-NMF without extrapolation***'); 
 [W,H,e,t] = betaNMF(X,r,options);
 %% Running MU without Nesterov extrapolation 
 options.extrapol = 'nesterov'; 
-disp('Running MU for beta-NMF with extrapolation (that is, MUe)'). 
+disp('***Running MU for beta-NMF with extrapolation (that is, MUe)***'); 
 [We,He,ee,te] = betaNMF(X,r,options);
 %% Display results 
 figure; 
