@@ -11,8 +11,8 @@ options.accuracy = 0;
 options.timemax = Inf;
 % lower bound for the entries of W and J:
 options.epsilon = 2^(-52);
-fprintf('Running HSI experiment: %2.0f data sets, %2.0f initializations.\n',...
-    numdatasets,numinit);
+fprintf('Running HSI experiment: %2.0f data sets, %2.0f initializations, %2.0f iterations.\n',...
+    numdatasets,numinit,options.maxiter);
 fprintf('This should take of the order of %2.0f minutes.\n', 2*numdatasets*options.maxiter*numinit/60);
 for ida = 1 : numdatasets
     if ida == 1
@@ -39,9 +39,10 @@ for ida = 1 : numdatasets
         options.H = MUbeta(X,W0,H0,options.beta,options.epsilon);
         options.W = MUbeta(X',options.H',W0',options.beta,options.epsilon);
         options.W = options.W';
+        options.extrapol = 'noextrap'; 
         [W,H,e,t] = betaNMF(X,r,options);
-        options.extrapol = @extrapol_nesterov;
-        [We,He,ee,te] = betaNMFextra(X,r,options);
+        options.extrapol = 'nesterov'; 
+        [We,He,ee,te] = betaNMF(X,r,options);
         etot(ida,i,:) = e;
         ttot(ida,i,:) = t;
         eetot(ida,i,:) = ee;
@@ -66,16 +67,20 @@ for ida = 1 : numdatasets
         load Pines; % ~ 1 second for 1 iteration
         r = 16;
     end
-    ida
     e = reshape(etot(ida,:,:),numinit,options.maxiter);
     ee = reshape(eetot(ida,:,:),numinit,options.maxiter);
-    T = (ee < e(end));
-    R(ida,:) = 100-sum(T')
     emin = min(min(e(:)),min(ee(:)));
+    set(0, 'DefaultAxesFontSize', 22);
+    set(0, 'DefaultLineLineWidth', 2); 
     figure;
     dist = betadiv(X,zeros(size(X)),options.beta);
-    semilogy((median(e)-emin)/dist); hold on;
-    semilogy((median(ee)-emin)/dist,'--');
+    if numinit == 1
+        semilogy(max(0,(e)-emin)/dist + eps); hold on;
+        semilogy(max(0,(ee)-emin)/dist+ eps,'--');        
+    else
+        semilogy((median(e)-emin)/dist); hold on;
+        semilogy((median(ee)-emin)/dist,'--');
+    end
     grid on;
     legend('MU', 'MUe', 'Interpreter', 'latex');
     xlabel('Iterations', 'Interpreter', 'latex','FontSize',22);
