@@ -5,19 +5,20 @@
 %   where options.beta is the beta divergence used to measure the error,
 %   and options.epsilon is a small nonnegative constant (we recommend to
 %   use the machine epsilon, which is the default value; cf. the discussion
-%   about the zero locking phenomenon of MU in the book).
-%
+%   about the zero locking phenomenon of MU in the book). 
+%   See https://gitlab.com/ngillis/nmfbook/ and 
+%       https://sites.google.com/site/nicolasgillis/book
 %
 % ****** Input ******
 % X     :  the nonnegative input matrix pair
 % r     :  the rank of the sought approximation
 %
 % ---Options---
-% .extrapol   : choice of the extrapolation sequence.
-%               default = 'nesterov'; see the paper
-%               other possibilities: ptsengv1 --> (t-1)/t
-%                                    ptsengv2 --> t/(t+1)
-%                                    noextrap --> 0 (no extrapolation)
+% .extrapol   : choice of the extrapolation sequence (see the paper for more details) 
+%               'nesterov' --> see the paper. Default for beta in [1,2]. 
+%               'ptsengv1' --> (t-1)/t.
+%               'ptsengv2' --> t/(t+1).
+%               'noextrap' --> 0 (no extrapolation). Default for beta NOT in [1,2]. 
 % .maxiter    : the maximum number of iterations performed by the algorithm
 %             -default = 500.
 % .timemax   : the maximum time in seconds alloted to the algorithm
@@ -38,11 +39,7 @@
 % e         : e gives the values of the objective functions during the
 %             iterative process, that is, D_beta(X,WH)
 %
-% Code modified from https://sites.google.com/site/nicolasgillis/code of
-% the paper N. Gillis, L. T. K. Hien, V. Leplat and V. Y. F. Tan,
-% "Distributionally Robust and Multi-Objective Nonnegative Matrix
-% Factorization", January 2019, http://arxiv.org/abs/1901.10757
-
+% Code modified from https://gitlab.com/ngillis/nmfbook/
 
 function [W,H,e,t] = betaNMF(X,r,options);
 
@@ -149,7 +146,7 @@ while i <= options.maxiter ...
     if nargout >= 3
         timeei = cputime;
         e(i) = betadiv(X,W*H,options.beta);
-        timeei = cputime-timeei;
+        timeei = cputime-timeei; % do not take the computation of the error in the cost
         if i == 1
             t(i) = cputime-time0-timeei;
         else
