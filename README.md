@@ -5,7 +5,7 @@ This MATLAB software reproduces the results from the following paper:
 
 ```
 @article{LeThiKhanhHien_BMMex2024,
-      title={Block Majorization Minimization with Extrapolation and Application to $\beta$-NMF}, 
+      title={Block Majorization Minimization with Extrapolation and Application to $\beta$-{NMF}}, 
       author={Le Thi Khanh Hien and Valentin Leplat and Nicolas Gillis},
       year={2024},
       journal={arXiv preprint arXiv:2401.06646} 
