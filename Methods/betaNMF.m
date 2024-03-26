@@ -114,9 +114,9 @@ while i <= options.maxiter ...
         extrapolparam = (nutprev-1)/nut;
         nutprev = nut;
     elseif options.extrapol == 'ptsengv1'
-        extrapolparam = (t-1)/t;
+        extrapolparam = (i-1)/i;
     elseif options.extrapol == 'ptsengv2'
-        extrapolparam = t/(t+1);
+        extrapolparam = i/(i+1);
     elseif options.extrapol == 'noextrap'
         extrapolparam = 0;
     end
